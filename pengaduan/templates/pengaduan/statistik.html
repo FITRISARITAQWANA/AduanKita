@@ -1,0 +1,45 @@
+{% extends "pengaduan/base.html" %}
+{% block content %}
+<div class="text-center mb-4">
+    <h1 class="animate__animated animate__fadeInDown">📈Statistik Aduan</h1>
+    <p class="text-muted">Data jumlah aduan berdasarkan kategori</p>
+</div>
+
+<div class="card shadow-sm p-4">
+    <canvas id="aduanChart" height="100"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const data = {
+        labels: [{% for item in data %}"{{ item.kategori }}"{% if not forloop.last %}, {% endif %}{% endfor %}],
+        datasets: [{
+            label: 'Jumlah Aduan',
+            data: [{% for item in data %}{{ item.jumlah }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+            backgroundColor: [
+                '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b'
+            ],
+            borderColor: '#fff',
+            borderWidth: 2,
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Distribusi Kategori Aduan'
+                }
+            }
+        }
+    };
+
+    const ctx = document.getElementById('aduanChart').getContext('2d');
+    new Chart(ctx, config);
+</script>
+{% endblock %}

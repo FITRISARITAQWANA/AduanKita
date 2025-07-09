@@ -1,0 +1,50 @@
+{% extends "pengaduan/base.html" %}
+{% block content %}
+<h1 class="mb-4 text-center animate__animated animate__fadeInDown">Selamat Datang di <span class="text-primary">AduanKita</span></h1>
+
+<div class="text-center mb-4">
+    <img src="https://cdn-icons-png.flaticon.com/512/3208/3208726.png" alt="Laporan" style="max-height: 150px;" class="img-fluid animate__animated animate__fadeIn" />
+</div>
+
+<div class="row mb-5">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <h5 class="card-title">📌 Total Aduan</h5>
+                <p class="card-text fs-4 fw-bold text-primary">{{ total_aduan }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <h5 class="card-title">📊 Statistik Kategori</h5>
+                <ul class="list-group list-group-flush">
+                    {% for item in jumlah_per_kategori %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ item.kategori|title }}
+                            <span class="badge bg-primary rounded-pill">{{ item.jumlah }}</span>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">Belum ada aduan masuk.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="mb-3 animate__animated animate__fadeInLeft">💡 Tips Layanan Masyarakat</h3>
+<div class="row">
+    {% for judul, isi in tips.items %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm animate__animated animate__fadeInUp">
+                <div class="card-body">
+                    <h5 class="card-title">{{ judul }}</h5>
+                    <p class="card-text">{{ isi }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

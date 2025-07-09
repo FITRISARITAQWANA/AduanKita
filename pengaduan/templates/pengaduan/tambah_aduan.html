@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Form Tambah Aduan</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="{{ form.nama.id_for_label }}" class="form-label">Nama</label>
+                    {{ form.nama|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.kategori.id_for_label }}" class="form-label">Kategori</label>
+                    {{ form.kategori|add_class:"form-select" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.isi.id_for_label }}" class="form-label">Isi Aduan</label>
+                    {{ form.isi|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.gambar.id_for_label }}" class="form-label">Upload Gambar (Opsional)</label>
+                    {{ form.gambar|add_class:"form-control" }}
+                </div>
+
+                <button type="submit" class="btn btn-success">Kirim Aduan</button>
+                <a href="{% url 'daftar_aduan' %}" class="btn btn-secondary">Kembali</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

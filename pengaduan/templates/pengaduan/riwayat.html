@@ -1,0 +1,15 @@
+{% extends "pengaduan/base.html" %}
+{% block content %}
+<h2 class="mb-4">Riwayat Pengaduan</h2>
+<ul class="list-group">
+    {% for item in aduan %}
+    <li class="list-group-item">
+        <strong>{{ item.nama }}</strong> - {{ item.kategori }}<br>
+        {{ item.isi|truncatechars:100 }}<br>
+        <small>{{ item.tanggal|date:"d M Y H:i" }}</small>
+    </li>
+    {% empty %}
+    <li class="list-group-item">Belum ada pengaduan.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
