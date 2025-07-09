@@ -138,12 +138,7 @@ Mata Kuliah: Algoritma Pemrograman Lanjutan
 🔗 Link Penting
 
 📂 GitHub Repo: https://github.com/fitrisaritaqwana/aduankita
-
 🌐 Demo Website (jika tersedia): https://aduankita-demo.vercel.app
-
-
-
----
 
 > "Aduan Anda, Aspirasi Kami!" — AduanKita Team
 
